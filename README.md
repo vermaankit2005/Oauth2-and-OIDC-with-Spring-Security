@@ -23,15 +23,18 @@ A pattern where a dedicated backend service is created for a specific frontend. 
 ```mermaid
 flowchart TD
     Browser["🌐 Browser"]
-    BFF["🛡 BFF Service<br/>(Spring Boot)"]
-    Resource["🔐 Resource Service<br/>(JWT Protected)"]
-    Keycloak["🧩 Keycloak<br/>(OIDC Provider)"]
+    BFF["🛡 BFF Service (Spring Boot)"]
+    Resource["🔐 Resource Service (JWT Protected)"]
+    Keycloak["🧩 Keycloak (OIDC Provider)"]
     GitHub["🐙 GitHub OAuth"]
 
-    Browser -->|HTTP-only Session Cookie| BFF
-    BFF -->|Bearer Token| Resource
-    Resource --> Keycloak
-    Keycloak --> GitHub
+    Browser -->|HTTP-only session cookie| BFF
+    BFF -->|Auth code exchange & tokens| Keycloak
+    Keycloak -->|Access, ID, Refresh tokens| BFF
+    BFF -->|Bearer token| Resource
+    Resource -->|JWT validation| Keycloak
+    Keycloak -->|OAuth with external provider| GitHub
+
 ```
 
 ## 🏗 Architecture Overview

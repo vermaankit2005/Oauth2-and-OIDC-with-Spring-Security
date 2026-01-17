@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+logging:
+  level:
+    org.springframework.security: DEBUG
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: bff-client
+            client-secret: <CHANGE_ME_WITH_REAL_SECRET_FROM_KEYCLOAK___REFER_KEYCLOAK_SETUP.MD>
+            scope: openid, profile, email
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/myrealm
+            user-name-attribute: preferred_username

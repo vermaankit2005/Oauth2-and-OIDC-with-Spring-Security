@@ -20,6 +20,19 @@ A pattern where a dedicated backend service is created for a specific frontend. 
 *   **In this project**: instead of the browser holding sensitive tokens (which is unsafe), the **BFF** holds them. The browser just establishes a secure session (Cookie) with the BFF. When the browser needs data, it asks the BFF, and the BFF uses the stored token to call the API.
 
 ---
+```mermaid
+flowchart TD
+    Browser["🌐 Browser"]
+    BFF["🛡 BFF Service<br/>(Spring Boot)"]
+    Resource["🔐 Resource Service<br/>(JWT Protected)"]
+    Keycloak["🧩 Keycloak<br/>(OIDC Provider)"]
+    GitHub["🐙 GitHub OAuth"]
+
+    Browser -->|HTTP-only Session Cookie| BFF
+    BFF -->|Bearer Token| Resource
+    Resource --> Keycloak
+    Keycloak --> GitHub
+```
 
 ## 🏗 Architecture Overview
 
@@ -84,4 +97,5 @@ Traditional Single Page Applications (SPAs) often store tokens in LocalStorage, 
 
 ## 🚀 Getting Started
 
-Please refer to [RUNNING.md](./RUNNING.md) for detailed instructions on how to set up and run this project.
+- Please refer to [RUNNING.md](./RUNNING.md) for detailed instructions on how to set up and run this project.
+- Please refer to [KEYCLOAK_SETUP.md](./KEYCLOAK_SETUP.md) for detailed instructions on how to set up KEYCLOCK.[Important]

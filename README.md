@@ -1,6 +1,6 @@
 # Spring Boot OAuth2/OIDC POC with Keycloak & GitHub
 
-This project implements a secure, production-ready authentication architecture using the **BFF (Backend for Frontend)** pattern. It demonstrates how to secure a distributed system using industry-standard protocols (OAuth2/OIDC) without exposing sensitive tokens to the browser.
+This project implements a secure authentication architecture using the **BFF (Backend for Frontend)** pattern. It demonstrates how to secure a distributed system using industry-standard protocols (OAuth2/OIDC) without exposing sensitive tokens to the browser.
 
 ## 🧠 Core Concepts
 
